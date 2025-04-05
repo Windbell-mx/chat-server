@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.windbell.mm.mapper.FriendCircleMapper">
+
+    <select id="getDynamicList" resultType="com.windbell.mm.model.entities.FriendsCircle">
+        select account, title_id, context, release_time
+        from t_friends_circle
+        order by release_time desc;
+    </select>
+
+    <insert id="publish">
+        insert into `t_friends_circle` (account, title_id, context, release_time)
+        values (#{account},#{titleId},#{context},now())
+    </insert>
+</mapper>
